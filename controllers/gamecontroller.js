@@ -6,9 +6,9 @@ const Game = require('../models/game')(db, Sequelize);
 router.get('/all', (req, res) => {
     Game.findAll({ where: { owner_id: req.user.id } })
         .then(
-            function findSuccess(data) {
+            function findSuccess(games) {
                 res.status(200).json({
-                    games: data,
+                    games: games,
                     message: "Data fetched."
                 })
             },
